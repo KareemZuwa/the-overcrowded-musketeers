@@ -1,4 +1,4 @@
-node_modules
-dist
 .cache
+dist
 package-lock.json
+node_modules
