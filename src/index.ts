@@ -3,6 +3,7 @@ const setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
 
 let timeAmountText = document.getElementById('set-time-length');
 let timeAmount: number = 10;
+let totalTimeInSeconds: number;
 
 let increaseBtn: HTMLAnchorElement= document.querySelector('#increase');
 let decreaseBtn: HTMLAnchorElement = document.querySelector('#decrease');
@@ -10,10 +11,10 @@ let intervalChecked: HTMLInputElement = document.querySelector('#intervals-check
 let breakChecked: HTMLInputElement = document.querySelector('#break-check');
 
 interface timeInfo {
-    time : number;
+    timeInMinutes : number;
     intervalOn: boolean;
     addBreak: boolean;
-    totalTimeInterval(intervalOn: boolean, addBreak: boolean): number;
+    totalTimeIntervalInSeconds(intervalOn: boolean, addBreak: boolean): number;
 }
 
 const timeHeader = document.createElement('h1');
@@ -36,24 +37,32 @@ decreaseBtn.onclick = () => decreaseTime();
 setTimerForm.addEventListener('submit', (e: Event) => {
     e.preventDefault();
     let timeObject: timeInfo = {
-        time : timeAmount,
+        timeInMinutes : timeAmount,
         intervalOn: intervalChecked.checked,
         addBreak: breakChecked.checked,
-        totalTimeInterval(intervalOn: boolean, addBreak: boolean): number {
+        totalTimeIntervalInSeconds(intervalOn: boolean, addBreak: boolean): number {
             if (intervalOn && addBreak) {
-                console.log('total interval plus break time: ', timeAmount+5);
-                return timeAmount + 5;
+                timeAmount = timeAmount+5;
+                console.log('total interval plus break time in minutes: ', timeAmount);
+                totalTimeInSeconds =timeAmount*60;
+                console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
+                return totalTimeInSeconds;
             } else if (intervalOn && !addBreak) {
-                console.log('total interval time: ', timeAmount);
-                return timeAmount;
+                console.log('total interval time in minutes: ', timeAmount);
+                totalTimeInSeconds =timeAmount*60;
+                console.log('total interval time in seconds: ', totalTimeInSeconds);
+                return totalTimeInSeconds;
             } else if (!intervalOn && addBreak) {
                 console.log("error, can't set break without intervals enabled");
                 return (0);
             } else {
-                return 0;
+                console.log('total time in minutes, no intervals: ', timeAmount);
+                totalTimeInSeconds =timeAmount*60;
+                console.log('total time in seconds, no intervals: ', totalTimeInSeconds);
+                return totalTimeInSeconds;
             }
         }     
     }
-    console.log(timeObject, timeObject.totalTimeInterval(timeObject.intervalOn, timeObject.addBreak));
+    console.log(timeObject, timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak));
     
 })
