@@ -1,6 +1,6 @@
-
+import { start_countdown } from './visual';
 import { hda } from './TS-module/test'
-
+console.log(start_countdown)
 let hej = hda;
 console.log(hej);
 

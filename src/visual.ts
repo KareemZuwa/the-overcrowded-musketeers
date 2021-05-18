@@ -11,3 +11,5 @@ function start_countdown(){
 },1000);
 }
 start_countdown();
+
+export {start_countdown}
