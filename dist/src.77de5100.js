@@ -117,25 +117,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"visual.ts":[function(require,module,exports) {
+})({"TS-module/test.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.start_countdown = void 0;
-var progress = document.querySelector('#pbar'); //any sätts här för att få value att fungera med nummer.
-
-function start_countdown() {
-  var reverse_counter = 20; //värde från settimer ist för 20
-
-  var downloadTimer = setInterval(function () {
-    progress.value = 20 - --reverse_counter;
-    if (reverse_counter <= 0) clearInterval(downloadTimer);
-  }, 1000);
-}
-
-exports.start_countdown = start_countdown;
+exports.hda = void 0;
+var hda = 'dadf';
+exports.hda = hda;
 },{}],"index.ts":[function(require,module,exports) {
 "use strict";
 
@@ -143,11 +133,72 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var visual_1 = require("./visual");
+var test_1 = require("./TS-module/test");
 
-visual_1.start_countdown();
-console.log("hello world!");
-},{"./visual":"visual.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var hej = test_1.hda;
+console.log(hej);
+var setTimerForm = document.querySelector('#set-timer-form');
+var timeAmountText = document.getElementById('set-time-length');
+var timeAmount = 10;
+var totalTimeInSeconds;
+var increaseBtn = document.querySelector('#increase');
+var decreaseBtn = document.querySelector('#decrease');
+var intervalChecked = document.querySelector('#intervals-check');
+var breakChecked = document.querySelector('#break-check');
+var timeHeader = document.createElement('h1');
+timeHeader.innerText = "" + timeAmount;
+timeAmountText.insertBefore(timeHeader, increaseBtn);
+
+var increaseTime = function increaseTime() {
+  timeAmount += 1;
+  timeHeader.innerText = "" + timeAmount;
+};
+
+var decreaseTime = function decreaseTime() {
+  timeAmount -= 1;
+  timeHeader.innerText = "" + timeAmount;
+};
+
+increaseBtn.onclick = function () {
+  return increaseTime();
+};
+
+decreaseBtn.onclick = function () {
+  return decreaseTime();
+};
+
+setTimerForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var timeObject = {
+    timeInMinutes: timeAmount,
+    intervalOn: intervalChecked.checked,
+    addBreak: breakChecked.checked,
+    totalTimeIntervalInSeconds: function totalTimeIntervalInSeconds(intervalOn, addBreak) {
+      if (intervalOn && addBreak) {
+        timeAmount = timeAmount + 5;
+        console.log('total interval plus break time in minutes: ', timeAmount);
+        totalTimeInSeconds = timeAmount * 60;
+        console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
+        return totalTimeInSeconds;
+      } else if (intervalOn && !addBreak) {
+        console.log('total interval time in minutes: ', timeAmount);
+        totalTimeInSeconds = timeAmount * 60;
+        console.log('total interval time in seconds: ', totalTimeInSeconds);
+        return totalTimeInSeconds;
+      } else if (!intervalOn && addBreak) {
+        console.log("error, can't set break without intervals enabled");
+        return 0;
+      } else {
+        console.log('total time in minutes, no intervals: ', timeAmount);
+        totalTimeInSeconds = timeAmount * 60;
+        console.log('total time in seconds, no intervals: ', totalTimeInSeconds);
+        return totalTimeInSeconds;
+      }
+    }
+  };
+  console.log(timeObject, timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak));
+});
+},{"./TS-module/test":"TS-module/test.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -175,7 +226,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50060" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51409" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
