@@ -1,3 +1,6 @@
+"use strict";
+exports.__esModule = true;
+var startcountdown_1 = require("./TS-module/startcountdown");
 var setTimerForm = document.querySelector('#set-timer-form');
 var timeAmountText = document.getElementById('set-time-length');
 var timeAmount = 10;
@@ -51,5 +54,7 @@ setTimerForm.addEventListener('submit', function (e) {
             }
         }
     };
-    console.log(timeObject, timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak));
+    var test = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak);
+    console.log(test);
+    startcountdown_1.startCountdown(test);
 });

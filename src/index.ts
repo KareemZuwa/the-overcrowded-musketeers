@@ -1,4 +1,4 @@
-
+import { timer, startCountdown } from './TS-module/startcountdown'
 
 const setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
 
@@ -64,6 +64,7 @@ setTimerForm.addEventListener('submit', (e: Event) => {
             }
         }     
     }
-    console.log(timeObject, timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak));
-    
+    let test = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
+    console.log(test);
+    startCountdown(test)
 })
