@@ -117,22 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"TS-module/test.js":[function(require,module,exports) {
-"use strict";
-
-exports.__esModule = true;
-exports.hda = void 0;
-var hda = 'dadf';
-exports.hda = hda;
-},{}],"index.js":[function(require,module,exports) {
-"use strict";
-
-exports.__esModule = true;
-
-var test_1 = require("./TS-module/test");
-
-var hej = test_1.hda;
-console.log(hej);
+})({"index.js":[function(require,module,exports) {
 var setTimerForm = document.querySelector('#set-timer-form');
 var timeAmountText = document.getElementById('set-time-length');
 var timeAmount = 10;
@@ -194,7 +179,7 @@ setTimerForm.addEventListener('submit', function (e) {
   };
   console.log(timeObject, timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak));
 });
-},{"./TS-module/test":"TS-module/test.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
