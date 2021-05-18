@@ -126,12 +126,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.hda = void 0;
 var hda = 'dadf';
 exports.hda = hda;
-},{}],"index.ts":[function(require,module,exports) {
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 
 var test_1 = require("./TS-module/test");
 
@@ -402,5 +400,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.ts"], null)
-//# sourceMappingURL=/src.77de5100.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+//# sourceMappingURL=/src.e31bb0bc.js.map
