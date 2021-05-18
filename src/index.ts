@@ -9,6 +9,13 @@ let decreaseBtn: HTMLAnchorElement = document.querySelector('#decrease');
 let intervalChecked: HTMLInputElement = document.querySelector('#intervals-check');
 let breakChecked: HTMLInputElement = document.querySelector('#break-check');
 
+interface timeInfo {
+    time : number;
+    intervalOn: boolean;
+    addBreak: boolean;
+    totalTimeInterval(intervalOn: boolean, addBreak: boolean): number;
+}
+
 const timeHeader = document.createElement('h1');
 timeHeader.innerText = `${timeAmount}`;
 timeAmountText.insertBefore(timeHeader, increaseBtn);
@@ -28,6 +35,25 @@ decreaseBtn.onclick = () => decreaseTime();
 
 setTimerForm.addEventListener('submit', (e: Event) => {
     e.preventDefault();
-    console.log('Intervals: ', intervalChecked.checked, '5 min break between intervals: ', breakChecked.checked, 'Chosen time amount: ', timeAmount, 'Total interval and break time: ', timeAmount + 5);
+    let timeObject: timeInfo = {
+        time : timeAmount,
+        intervalOn: intervalChecked.checked,
+        addBreak: breakChecked.checked,
+        totalTimeInterval(intervalOn: boolean, addBreak: boolean): number {
+            if (intervalOn && addBreak) {
+                console.log('total interval plus break time: ', timeAmount+5);
+                return timeAmount + 5;
+            } else if (intervalOn && !addBreak) {
+                console.log('total interval time: ', timeAmount);
+                return timeAmount;
+            } else if (!intervalOn && addBreak) {
+                console.log("error, can't set break without intervals enabled");
+                return (0);
+            } else {
+                return 0;
+            }
+        }     
+    }
+    console.log(timeObject, timeObject.totalTimeInterval(timeObject.intervalOn, timeObject.addBreak));
     
 })

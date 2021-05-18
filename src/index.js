@@ -20,5 +20,27 @@ increaseBtn.onclick = function () { return increaseTime(); };
 decreaseBtn.onclick = function () { return decreaseTime(); };
 setTimerForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    console.log('Intervals: ', intervalChecked.checked, '5 min break between intervals: ', breakChecked.checked, 'Chosen time amount: ', timeAmount, 'Total interval and break time: ', timeAmount + 5);
+    var timeObject = {
+        time: timeAmount,
+        intervalOn: intervalChecked.checked,
+        addBreak: breakChecked.checked,
+        totalTimeInterval: function (intervalOn, addBreak) {
+            if (intervalOn && addBreak) {
+                console.log('total interval plus break time: ', timeAmount + 5);
+                return timeAmount + 5;
+            }
+            else if (intervalOn && !addBreak) {
+                console.log('total interval time: ', timeAmount);
+                return timeAmount;
+            }
+            else if (!intervalOn && addBreak) {
+                console.log("error, can't set break without intervals enabled");
+                return (0);
+            }
+            else {
+                return 0;
+            }
+        }
+    };
+    console.log(timeObject, timeObject.totalTimeInterval(timeObject.intervalOn, timeObject.addBreak));
 });
