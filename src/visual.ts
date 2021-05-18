@@ -10,4 +10,4 @@ function start_countdown(){
 
 },1000);
 }
-export {start_countdown};
+start_countdown();
