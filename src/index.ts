@@ -1,4 +1,10 @@
 
+import { hda } from './TS-module/test'
+
+let hej = hda;
+console.log(hej);
+
+
 const setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
 
 let timeAmountText = document.getElementById('set-time-length');

@@ -1,3 +1,8 @@
+"use strict";
+exports.__esModule = true;
+var test_1 = require("./TS-module/test");
+var hej = test_1.hda;
+console.log(hej);
 var setTimerForm = document.querySelector('#set-timer-form');
 var timeAmountText = document.getElementById('set-time-length');
 var timeAmount = 10;

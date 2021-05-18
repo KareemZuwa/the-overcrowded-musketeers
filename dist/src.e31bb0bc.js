@@ -117,79 +117,84 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"TS-module/test.js":[function(require,module,exports) {
+"use strict";
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
+exports.__esModule = true;
+exports.hda = void 0;
+var hda = 'dadf';
+exports.hda = hda;
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
 
-  return bundleURL;
-}
+exports.__esModule = true;
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+var test_1 = require("./TS-module/test");
 
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
+var hej = test_1.hda;
+console.log(hej);
+var setTimerForm = document.querySelector('#set-timer-form');
+var timeAmountText = document.getElementById('set-time-length');
+var timeAmount = 10;
+var totalTimeInSeconds;
+var increaseBtn = document.querySelector('#increase');
+var decreaseBtn = document.querySelector('#decrease');
+var intervalChecked = document.querySelector('#intervals-check');
+var breakChecked = document.querySelector('#break-check');
+var timeHeader = document.createElement('h1');
+timeHeader.innerText = "" + timeAmount;
+timeAmountText.insertBefore(timeHeader, increaseBtn);
 
-  return '/';
-}
+var increaseTime = function increaseTime() {
+  timeAmount += 1;
+  timeHeader.innerText = "" + timeAmount;
+};
 
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
+var decreaseTime = function decreaseTime() {
+  timeAmount -= 1;
+  timeHeader.innerText = "" + timeAmount;
+};
 
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
+increaseBtn.onclick = function () {
+  return increaseTime();
+};
 
-function updateLink(link) {
-  var newLink = link.cloneNode();
+decreaseBtn.onclick = function () {
+  return decreaseTime();
+};
 
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
+setTimerForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var timeObject = {
+    timeInMinutes: timeAmount,
+    intervalOn: intervalChecked.checked,
+    addBreak: breakChecked.checked,
+    totalTimeIntervalInSeconds: function totalTimeIntervalInSeconds(intervalOn, addBreak) {
+      if (intervalOn && addBreak) {
+        timeAmount = timeAmount + 5;
+        console.log('total interval plus break time in minutes: ', timeAmount);
+        totalTimeInSeconds = timeAmount * 60;
+        console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
+        return totalTimeInSeconds;
+      } else if (intervalOn && !addBreak) {
+        console.log('total interval time in minutes: ', timeAmount);
+        totalTimeInSeconds = timeAmount * 60;
+        console.log('total interval time in seconds: ', totalTimeInSeconds);
+        return totalTimeInSeconds;
+      } else if (!intervalOn && addBreak) {
+        console.log("error, can't set break without intervals enabled");
+        return 0;
+      } else {
+        console.log('total time in minutes, no intervals: ', timeAmount);
+        totalTimeInSeconds = timeAmount * 60;
+        console.log('total time in seconds, no intervals: ', totalTimeInSeconds);
+        return totalTimeInSeconds;
       }
     }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  };
+  console.log(timeObject, timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak));
+});
+},{"./TS-module/test":"TS-module/test.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +398,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/styles.164d45a1.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+//# sourceMappingURL=/src.e31bb0bc.js.map
