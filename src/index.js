@@ -1,14 +1,20 @@
 "use strict";
 exports.__esModule = true;
+exports.startCountdown = exports.totalTime = exports.timeObject = void 0;
 var startcountdown_1 = require("./TS-module/startcountdown");
+exports.startCountdown = startcountdown_1.startCountdown;
 var setTimerForm = document.querySelector('#set-timer-form');
 var timeAmountText = document.getElementById('set-time-length');
 var timeAmount = 10;
 var totalTimeInSeconds;
+var totalTime;
+exports.totalTime = totalTime;
 var increaseBtn = document.querySelector('#increase');
 var decreaseBtn = document.querySelector('#decrease');
 var intervalChecked = document.querySelector('#intervals-check');
 var breakChecked = document.querySelector('#break-check');
+var timeObject;
+exports.timeObject = timeObject;
 var timeHeader = document.createElement('h1');
 timeHeader.innerText = "" + timeAmount;
 timeAmountText.insertBefore(timeHeader, increaseBtn);
@@ -26,24 +32,23 @@ decreaseBtn.onclick = function () { return decreaseTime(); };
 //The startCountdown-function is called with information from the interface as arguments.
 setTimerForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var timeObject = {
+    exports.timeObject = timeObject = {
         timeInMinutes: timeAmount,
         intervalOn: intervalChecked.checked,
         addBreak: breakChecked.checked,
         totalTimeIntervalInSeconds: function (intervalOn, addBreak) {
-            if (intervalOn && addBreak) {
-                timeAmount = timeAmount + 5;
-                console.log('total interval plus break time in minutes: ', timeAmount);
+            if (intervalOn /*  && addBreak */) {
+                // timeAmount = timeAmount+5;
+                //console.log('total interval plus break time in minutes: ', timeAmount);
                 totalTimeInSeconds = timeAmount * 60;
-                console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
+                // console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
                 return totalTimeInSeconds;
-            }
-            else if (intervalOn && !addBreak) {
+            } /* else if (intervalOn && !addBreak) {
                 console.log('total interval time in minutes: ', timeAmount);
-                totalTimeInSeconds = timeAmount * 60;
+                totalTimeInSeconds =timeAmount*60;
                 console.log('total interval time in seconds: ', totalTimeInSeconds);
                 return totalTimeInSeconds;
-            }
+            } */
             else if (!intervalOn && addBreak) {
                 console.log("error, can't set break without intervals enabled");
                 return (0);
@@ -51,12 +56,15 @@ setTimerForm.addEventListener('submit', function (e) {
             else {
                 console.log('total time in minutes, no intervals: ', timeAmount);
                 totalTimeInSeconds = timeAmount * 60;
-                console.log('total time in seconds, no intervals: ', totalTimeInSeconds);
+                //console.log('total time in seconds, no intervals: ', totalTimeInSeconds);
                 return totalTimeInSeconds;
             }
         }
     };
-    var totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak);
+    exports.totalTime = totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak);
     console.log(totalTime);
-    startcountdown_1.startCountdown(totalTime, timeObject.intervalOn);
+    startcountdown_1.startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak);
+    var testtext = document.createElement('span');
+    testtext.innerText = "" + totalTime;
+    document.querySelector('form').appendChild(testtext);
 });
