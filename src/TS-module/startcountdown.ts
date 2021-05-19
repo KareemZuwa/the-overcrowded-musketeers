@@ -1,9 +1,6 @@
 import { Timer } from 'easytimer.js';
 
-
-
 let timer: Timer = new Timer();
-
 
 // Start countdown on click, with times in seconds from form as arguments
 let startCountdown = (timeInSeconds: number, intervalOn: boolean) => {

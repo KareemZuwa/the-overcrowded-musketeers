@@ -1,3 +1,4 @@
+import { timeObject } from './index'
 import { Timer } from 'easytimer.js'
 import { timer } from './TS-module/startcountdown'
 import * as digitalpause from './TS-module/digitalpause'
@@ -15,6 +16,7 @@ let test = () =>{
     El.insertAdjacentHTML('beforeend', digitalpause.render(timer));
 
 const progress: any = document.querySelector('#pbar') //any sätts här för att få value att fungera med nummer.
+console.log(timeObject)
 
 function start_countdown(){
     console.log(calculate)
@@ -24,7 +26,7 @@ function start_countdown(){
     progress.value = calculate - --reverse_counter; 
     if(reverse_counter <= 0)
     clearInterval(downloadTimer);
-
+    console.log(timeObject)
 },1000);
 }
 start_countdown();
