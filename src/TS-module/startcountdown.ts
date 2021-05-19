@@ -1,9 +1,5 @@
 import { Timer } from 'easytimer.js';
 
-
-
-
-
 let timer: Timer = new Timer();
 
 
@@ -30,8 +26,6 @@ let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: bool
             timer.stop();
         }
     })
-
-    
 }
 //Export the entire timer object and the startcountdown function
 export { timer, startCountdown }

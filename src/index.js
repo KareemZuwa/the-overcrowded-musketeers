@@ -1,14 +1,12 @@
 "use strict";
 exports.__esModule = true;
-exports.startCountdown = exports.totalTime = exports.timeObject = void 0;
+exports.timeObject = void 0;
 var startcountdown_1 = require("./TS-module/startcountdown");
-exports.startCountdown = startcountdown_1.startCountdown;
 var setTimerForm = document.querySelector('#set-timer-form');
 var timeAmountText = document.getElementById('set-time-length');
 var timeAmount = 10;
 var totalTimeInSeconds;
 var totalTime;
-exports.totalTime = totalTime;
 var increaseBtn = document.querySelector('#increase');
 var decreaseBtn = document.querySelector('#decrease');
 var intervalChecked = document.querySelector('#intervals-check');
@@ -52,7 +50,7 @@ setTimerForm.addEventListener('submit', function (e) {
             }
         }
     };
-    exports.totalTime = totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak);
+    totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak);
     console.log(totalTime);
     startcountdown_1.startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak);
     var testtext = document.createElement('span');

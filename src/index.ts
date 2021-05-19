@@ -74,4 +74,4 @@ setTimerForm.addEventListener('submit', (e: Event) => {
 
 })
 
-export { timeObject, totalTime, startCountdown }
+export { timeObject }
