@@ -9,23 +9,33 @@
 </head>
 <body>
     <div id="app">
-        <h1>Hello World!</h1>
-    </div>
-    <form id='set-timer-form'>
-        <article id='set-time-length'>
-            <a id='decrease'> < </a>
-            <h1 id='time-amount'></h1>
-            <a id="increase"> > </a>
+        <form id='set-timer-form'>
+            <article id='set-time-length'>
+                <a id='decrease'></a>
+                <h1 id='time-amount'></h1>
+                <a id="increase"></a>
+            </article>
             <span>minutes</span>
-        </article>
-        <article id='time-checkboxes'>
-            <input id="intervals-check" type="checkbox" name="intervals" >
-            <label for="intervals">intervals</label>
-            <input id="break-check" type="checkbox" name="break-interval" >
-            <label for="break-interval">5 min break / interval</label>
-        </article>
-        <button>start timer</button>
-    </form>
-    <script src="index.js"></script>
+            <article id='time-checkboxes'>
+                <label for="intervals" class="checkbox-container">intervals
+                    <input id="intervals-check" type="checkbox" name="intervals" >
+                    <span class="checkmark"></span>
+                </label>
+                <label for="break-interval" class="checkbox-container">5 min break / interval
+                    <input id="break-check" type="checkbox" name="break-interval" >
+                    <span class="checkmark"></span>
+                </label>
+            </article>
+            <button>start timer</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <script type="module" src="index.ts"></script>
 </body>
 </html>
