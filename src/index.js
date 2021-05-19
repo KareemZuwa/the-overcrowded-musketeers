@@ -22,6 +22,8 @@ var decreaseTime = function () {
 };
 increaseBtn.onclick = function () { return increaseTime(); };
 decreaseBtn.onclick = function () { return decreaseTime(); };
+//When submit is clicked, a new timeInfo interface is created. The total amount of seconds is calculated, including break-time
+//The startCountdown-function is called with information from the interface as arguments.
 setTimerForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var timeObject = {
@@ -54,7 +56,7 @@ setTimerForm.addEventListener('submit', function (e) {
             }
         }
     };
-    var test = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak);
-    console.log(test);
-    startcountdown_1.startCountdown(test);
+    var totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak);
+    console.log(totalTime);
+    startcountdown_1.startCountdown(totalTime, timeObject.intervalOn);
 });

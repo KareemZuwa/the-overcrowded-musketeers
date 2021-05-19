@@ -35,6 +35,9 @@ const decreaseTime = () => {
 increaseBtn.onclick = () => increaseTime();
 decreaseBtn.onclick = () => decreaseTime();
 
+
+//When submit is clicked, a new timeInfo interface is created. The total amount of seconds is calculated, including break-time
+//The startCountdown-function is called with information from the interface as arguments.
 setTimerForm.addEventListener('submit', (e: Event) => {
     e.preventDefault();
     let timeObject: timeInfo = {
@@ -64,7 +67,7 @@ setTimerForm.addEventListener('submit', (e: Event) => {
             }
         }     
     }
-    let test = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
-    console.log(test);
-    startCountdown(test)
+    let totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
+    console.log(totalTime);
+    startCountdown(totalTime, timeObject.intervalOn)
 })
