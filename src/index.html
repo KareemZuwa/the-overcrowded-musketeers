@@ -16,21 +16,42 @@
                 <a id="increase"></a>
             </article>
             <span>minutes</span>
-        </article>
-        <article id='time-checkboxes'>
-            <input id="intervals-check" type="checkbox" name="intervals" >
-            <label for="intervals">intervals</label>
-            <input id="break-check" type="checkbox" name="break-interval" >
-            <label for="break-interval">5 min break / interval</label>
-        </article>
-        <button>start timer</button>
-    </form>
+            <article id='time-checkboxes'>
+                <label for="intervals" class="checkbox-container">intervals
+                    <input id="intervals-check" type="checkbox" name="intervals" >
+                    <span class="checkmark"></span>
+                </label>
+                <label for="break-interval" class="checkbox-container">5 min break / interval
+                    <input id="break-check" type="checkbox" name="break-interval" >
+                    <span class="checkmark"></span>
+                </label>
+            </article>
+            <button>start timer</button>
+        </form>
+        
 
+        
     <section id="visual-page">
         <progress value="0" max="0" id="pbar" >20</progress>
         <button id="stop">ABORT TIMER</button>
     </section>
 
+    <section id="break-page">
+        <button id="pause"></button>
+        <img src="./SVGs/pause-and-breathe-white.svg" alt="">
+        <p ></p>
+        <button id="stop">ABORT TIMER</button>
+    </section>
+
     <script src="index.ts"></script>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <script type="module" src="index.ts"></script>
 </body>
 </html>
