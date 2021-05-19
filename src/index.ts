@@ -7,6 +7,7 @@ let timeAmount: number = 10;
 let totalTimeInSeconds: number;
 let totalTime;
 
+
 let increaseBtn: HTMLAnchorElement= document.querySelector('#increase');
 let decreaseBtn: HTMLAnchorElement = document.querySelector('#decrease');
 let intervalChecked: HTMLInputElement = document.querySelector('#intervals-check');
@@ -18,6 +19,9 @@ interface timeInfo {
     addBreak: boolean;
     totalTimeIntervalInSeconds(intervalOn: boolean, addBreak: boolean): number;
 }
+
+let timeObject: timeInfo;
+
 
 const timeHeader = document.createElement('h1');
 timeHeader.innerText = `${timeAmount}`;
@@ -41,7 +45,7 @@ decreaseBtn.onclick = () => decreaseTime();
 //The startCountdown-function is called with information from the interface as arguments.
 setTimerForm.addEventListener('submit', (e: Event) => {
     e.preventDefault();
-    let timeObject: timeInfo = {
+     timeObject = {
         timeInMinutes : timeAmount,
         intervalOn: intervalChecked.checked,
         addBreak: breakChecked.checked,
@@ -70,3 +74,4 @@ setTimerForm.addEventListener('submit', (e: Event) => {
 
 })
 
+export { timeObject }
