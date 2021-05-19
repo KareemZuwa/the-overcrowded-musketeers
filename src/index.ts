@@ -1,9 +1,4 @@
-import { start_countdown } from './visual';
-import { hda } from './TS-module/test'
-console.log(start_countdown)
-let hej = hda;
-console.log(hej);
-
+import { timer, startCountdown } from './TS-module/startcountdown'
 
 const setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
 
@@ -40,6 +35,9 @@ const decreaseTime = () => {
 increaseBtn.onclick = () => increaseTime();
 decreaseBtn.onclick = () => decreaseTime();
 
+
+//When submit is clicked, a new timeInfo interface is created. The total amount of seconds is calculated, including break-time
+//The startCountdown-function is called with information from the interface as arguments.
 setTimerForm.addEventListener('submit', (e: Event) => {
     e.preventDefault();
     let timeObject: timeInfo = {
@@ -69,6 +67,7 @@ setTimerForm.addEventListener('submit', (e: Event) => {
             }
         }     
     }
-    console.log(timeObject, timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak));
-    
+    let totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
+    console.log(totalTime);
+    startCountdown(totalTime, timeObject.intervalOn)
 })
