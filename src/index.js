@@ -1,6 +1,5 @@
 "use strict";
 exports.__esModule = true;
-exports.timeObject = void 0;
 var startcountdown_1 = require("./TS-module/startcountdown");
 var setTimerForm = document.querySelector('#set-timer-form');
 var timeAmountText = document.getElementById('set-time-length');
@@ -11,8 +10,6 @@ var increaseBtn = document.querySelector('#increase');
 var decreaseBtn = document.querySelector('#decrease');
 var intervalChecked = document.querySelector('#intervals-check');
 var breakChecked = document.querySelector('#break-check');
-var timeObject;
-exports.timeObject = timeObject;
 var timeHeader = document.createElement('h1');
 timeHeader.innerText = "" + timeAmount;
 timeAmountText.insertBefore(timeHeader, increaseBtn);
@@ -30,7 +27,7 @@ decreaseBtn.onclick = function () { return decreaseTime(); };
 //The startCountdown-function is called with information from the interface as arguments.
 setTimerForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    exports.timeObject = timeObject = {
+    var timeObject = {
         timeInMinutes: timeAmount,
         intervalOn: intervalChecked.checked,
         addBreak: breakChecked.checked,
