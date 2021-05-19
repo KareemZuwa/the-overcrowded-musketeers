@@ -1,7 +1,9 @@
 import { timer, startCountdown } from './TS-module/startcountdown';
+import { timeglass } from './visual';
+
+console.log(timeglass)
 
 const setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
-
 
 let timeInfo;
 let timeAmountText = document.getElementById('set-time-length');
@@ -74,5 +76,4 @@ setTimerForm.addEventListener('submit', (e: Event) => {
     console.log(totalTime);
     startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
 })
-
 export {timeObject}
