@@ -10,7 +10,7 @@ timer.on('secondsUpdated', () =>{
     let minutes = timer.getTimeValues().minutes
     let seconds = timer.getTimeValues().seconds
 
-    console.log(minutes:seconds)
+    console.log(minutes, seconds)
 
         El.innerHTML = '';
         El.insertAdjacentHTML('beforeend', digitalpause.render(timer));
