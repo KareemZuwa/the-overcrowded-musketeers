@@ -1,10 +1,11 @@
-import { timer, startCountdown } from './TS-module/startcountdown'
-import { start_countdown } from './visual';
+import { timer, startCountdown } from './TS-module/startcountdown';
+import { timeglass } from './visual';
 
-console.log(start_countdown)
+console.log(timeglass)
 
 const setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
 
+let timeInfo;
 let timeAmountText = document.getElementById('set-time-length');
 let timeAmount: number = 10;
 let totalTimeInSeconds: number;
@@ -20,6 +21,7 @@ interface timeInfo {
     addBreak: boolean;
     totalTimeIntervalInSeconds(intervalOn: boolean, addBreak: boolean): number;
 }
+let timeObject: timeInfo;
 
 const timeHeader = document.createElement('h1');
 timeHeader.innerText = `${timeAmount}`;
@@ -43,7 +45,7 @@ decreaseBtn.onclick = () => decreaseTime();
 //The startCountdown-function is called with information from the interface as arguments.
 setTimerForm.addEventListener('submit', (e: Event) => {
     e.preventDefault();
-    let timeObject: timeInfo = {
+    timeObject = {
         timeInMinutes : timeAmount,
         intervalOn: intervalChecked.checked,
         addBreak: breakChecked.checked,
@@ -74,3 +76,4 @@ setTimerForm.addEventListener('submit', (e: Event) => {
     console.log(totalTime);
     startCountdown(totalTime, timeObject.intervalOn)
 })
+export {timeObject}
