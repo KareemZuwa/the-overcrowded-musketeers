@@ -11,6 +11,21 @@
     <div id="app">
         <h1>Hello World!</h1>
     </div>
-    <script src="index.ts"></script>
+    <form id='set-timer-form'>
+        <article id='set-time-length'>
+            <a id='decrease'> < </a>
+            <h1 id='time-amount'></h1>
+            <a id="increase"> > </a>
+            <span>minutes</span>
+        </article>
+        <article id='time-checkboxes'>
+            <input id="intervals-check" type="checkbox" name="intervals" >
+            <label for="intervals">intervals</label>
+            <input id="break-check" type="checkbox" name="break-interval" >
+            <label for="break-interval">5 min break / interval</label>
+        </article>
+        <button>start timer</button>
+    </form>
+    <script src="index.js"></script>
 </body>
 </html>
