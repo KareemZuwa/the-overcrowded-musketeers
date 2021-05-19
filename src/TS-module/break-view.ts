@@ -1,15 +1,18 @@
-import { Timer } from 'easytimer.js'
 import { timer } from './startcountdown'
-import * as digitaltime from '../TS-module/digital-timer';
+import * as digitalpause from './digitalpause'
+
+let El: any = document.querySelector('#break-page')
 
 timer.on('secondsUpdated', () =>{
-    El.innerHTML = '';
-    El.insertAdjacentHTML('beforeend', digitaltime.render(timer))
+    console.log(timer.getTimeValues().minutes)
+    console.log(timer.getTimeValues().seconds)
+
+    let minutes = timer.getTimeValues().minutes
+    let seconds = timer.getTimeValues().seconds
+
+    console.log(minutes:seconds)
+
+        El.innerHTML = '';
+        El.insertAdjacentHTML('beforeend', digitalpause.render(timer));
+
 })
-
-
-let El: any = document.querySelector('#break-page');
-
-
-
-export {timed}

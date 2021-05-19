@@ -1,4 +1,11 @@
+import { Timer } from 'easytimer.js'
+import { timer } from './TS-module/startcountdown'
+
 const progress: any = document.querySelector('#pbar') //any sätts här för att få value att fungera med nummer.
+
+timer.on('secondsUpdated', () =>{
+    console.log(timer)
+})
 
 function start_countdown(){
 

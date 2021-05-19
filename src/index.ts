@@ -1,9 +1,9 @@
 import { timer, startCountdown } from './TS-module/startcountdown'
 import { start_countdown } from './visual';
-import {timed} from './TS-module/break-view'
+import {timing} from './TS-module/break-view'
 
 console.log(start_countdown)
-console.log(timed)
+console.log(timing)
 
 const setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
 
