@@ -1,7 +1,4 @@
 import { timer, startCountdown } from './TS-module/startcountdown';
-//import { timeglass } from './visual';
-
-//console.log(timeglass)
 
 const setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
 
