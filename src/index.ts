@@ -77,8 +77,4 @@ setTimerForm.addEventListener('submit', (e: Event) => {
     console.log(totalTime);
     startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
 })
-<<<<<<< HEAD
-=======
-
->>>>>>> ba219464d933dd6b1a572c9e57569331025aebf6
 export {timeObject}
