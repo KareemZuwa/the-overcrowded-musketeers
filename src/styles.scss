@@ -4,4 +4,45 @@
 body {
   margin: 0 auto;
   @include center;
+
+  #set-timer-form {
+    display: block;
+
+    button {
+      font-family: "PT Sans", sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      appearance: none;
+      background: none;
+      display: inline-block;
+      padding: 0.5rem 4rem;
+      border: 1px solid $black;
+      color: $black;
+      text-transform: uppercase;
+      border-radius: $radius;
+    }
+  }
+
+  #visual-page {
+    display: none;
+  }
+  //progress bar//
+  progress[value] {
+    border: none;
+    width: 100vh;
+    height: 100vh;
+    transform: rotate(-90deg);
+    // Reset the default appearance //
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  progress[value]::-webkit-progress-bar {
+    background-color: #222222;
+  }
+  progress[value]::-webkit-progress-value {
+    background-color: #eeeeee;
+    border-radius: 2px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+  }
 }
