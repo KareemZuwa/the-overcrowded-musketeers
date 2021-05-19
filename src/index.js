@@ -37,18 +37,10 @@ setTimerForm.addEventListener('submit', function (e) {
         intervalOn: intervalChecked.checked,
         addBreak: breakChecked.checked,
         totalTimeIntervalInSeconds: function (intervalOn, addBreak) {
-            if (intervalOn /*  && addBreak */) {
-                // timeAmount = timeAmount+5;
-                //console.log('total interval plus break time in minutes: ', timeAmount);
+            if (intervalOn) {
                 totalTimeInSeconds = timeAmount * 60;
-                // console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
                 return totalTimeInSeconds;
-            } /* else if (intervalOn && !addBreak) {
-                console.log('total interval time in minutes: ', timeAmount);
-                totalTimeInSeconds =timeAmount*60;
-                console.log('total interval time in seconds: ', totalTimeInSeconds);
-                return totalTimeInSeconds;
-            } */
+            }
             else if (!intervalOn && addBreak) {
                 console.log("error, can't set break without intervals enabled");
                 return (0);
@@ -56,7 +48,6 @@ setTimerForm.addEventListener('submit', function (e) {
             else {
                 console.log('total time in minutes, no intervals: ', timeAmount);
                 totalTimeInSeconds = timeAmount * 60;
-                //console.log('total time in seconds, no intervals: ', totalTimeInSeconds);
                 return totalTimeInSeconds;
             }
         }
