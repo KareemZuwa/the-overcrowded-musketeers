@@ -1,9 +1,10 @@
 import { timer, startCountdown } from './TS-module/startcountdown';
-import { timeglass } from './visual';
+//import { timeglass } from './visual';
 
-console.log(timeglass)
+//console.log(timeglass)
 
 const setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
+
 
 let timeInfo;
 let timeAmountText = document.getElementById('set-time-length');
@@ -51,7 +52,7 @@ setTimerForm.addEventListener('submit', (e: Event) => {
         addBreak: breakChecked.checked,
         totalTimeIntervalInSeconds(intervalOn: boolean, addBreak: boolean): number {
             if (intervalOn && addBreak) {
-                timeAmount = timeAmount+5;
+                timeAmount = timeAmount;
                 console.log('total interval plus break time in minutes: ', timeAmount);
                 totalTimeInSeconds =timeAmount*60;
                 console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
@@ -74,6 +75,7 @@ setTimerForm.addEventListener('submit', (e: Event) => {
     }
     let totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
     console.log(totalTime);
-    startCountdown(totalTime, timeObject.intervalOn)
+    startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
 })
+
 export {timeObject}
