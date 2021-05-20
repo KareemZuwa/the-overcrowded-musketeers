@@ -1,13 +1,11 @@
 @import "./styles/typography.scss";
 @import "./styles/variables.scss";
-<<<<<<< HEAD
 @import "./styles/settime.scss";
 @import "./styles/startbutton.scss";
 @import "./styles/break-view.scss";
-=======
 @import "./styles/analog.scss";
 
->>>>>>> main-page
+
 body {
   margin: 0 auto;
   @include center;
