@@ -1,6 +1,7 @@
 import { timer, startCountdown } from './TS-module/startcountdown'
 import { test } from './visual';
 import { analogClock, toWords } from './TS-module/analogClock';
+import { exportNav, openNav, closeNav } from "../src/TS-module/navigation";
 
 //console.log(test)
 
@@ -16,7 +17,12 @@ let decreaseBtn: HTMLAnchorElement = document.querySelector('#decrease');
 let intervalChecked: HTMLInputElement = document.querySelector('#intervals-check');
 let breakChecked: HTMLInputElement = document.querySelector('#break-check');
 
+let analogClockDiv : HTMLDivElement = document.querySelector('#analogClock');
+let menuSection : HTMLDivElement = document.querySelector('#menu');
 
+let menuList : HTMLUListElement = exportNav();
+
+menuSection.appendChild(menuList);
 
 interface timeInfo {
     timeInMinutes : number;
@@ -77,6 +83,7 @@ setTimerForm.addEventListener('submit', (e: Event) => {
     }
     let totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
     //console.log(timeObject.timeInMinutes);
+    analogClockDiv.setAttribute('display', 'block')
     analogClock(timeObject.timeInMinutes);
     startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
 })
