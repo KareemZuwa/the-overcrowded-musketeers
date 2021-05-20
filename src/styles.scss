@@ -1,8 +1,45 @@
 @import "./styles/typography.scss";
 @import "./styles/variables.scss";
 @import "./styles/settime.scss";
-
+@import "./styles/startbutton.scss";
 body {
   margin: 0 auto;
   @include center;
+}
+
+//progress bar//
+
+progress[value] {
+  border: none;
+  width: 100vh;
+  height: 100vh;
+  transform: rotate(-90deg);
+
+  // Reset the default appearance //
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #222222;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #eeeeee;
+  border-radius: 2px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+#set-timer-form {
+  display: block;
+  text-align: center;
+}
+#visual-page {
+  display: none;
+}
+#digital-timer {
+  display: block;
+}
+#break-page {
+  display: none;
 }

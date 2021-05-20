@@ -42,38 +42,38 @@ import { timer, startCountdown } from './TS-module/startcountdown'
 
 
 //When submit is clicked, a new timeInfo interface is created. The total amount of seconds is calculated, including break-time
- //The startCountdown-function is called with information from the interface as arguments.
- setTimerForm.addEventListener('submit', (e: Event) => {
-     e.preventDefault();
-     timeObject = {
-         timeInMinutes : timeAmount,
-         intervalOn: intervalChecked.checked,
-         addBreak: breakChecked.checked,
-         totalTimeIntervalInSeconds(intervalOn: boolean, addBreak: boolean): number {
-             if (intervalOn && addBreak) {
-                 timeAmount = timeAmount;
-                 console.log('total interval plus break time in minutes: ', timeAmount);
-                 totalTimeInSeconds =timeAmount*60;
-                 console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
-                 return totalTimeInSeconds;
-             } else if (intervalOn && !addBreak) {
-                 console.log('total interval time in minutes: ', timeAmount);
-                 totalTimeInSeconds =timeAmount*60;
-                 console.log('total interval time in seconds: ', totalTimeInSeconds);
-                 return totalTimeInSeconds;
-             } else if (!intervalOn && addBreak) {
-                 console.log("error, can't set break without intervals enabled");
-                 return (0);
-             } else {
-                 console.log('total time in minutes, no intervals: ', timeAmount);
-                 totalTimeInSeconds =timeAmount*60;
-                 console.log('total time in seconds, no intervals: ', totalTimeInSeconds);
-                 return totalTimeInSeconds;
-             }
-         }     
-     }
-     let totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
-     console.log(totalTime);
-     startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
- })
- export {timeObject}
+//The startCountdown-function is called with information from the interface as arguments.
+setTimerForm.addEventListener('submit', (e: Event) => {
+    e.preventDefault();
+    timeObject = {
+        timeInMinutes : timeAmount,
+        intervalOn: intervalChecked.checked,
+        addBreak: breakChecked.checked,
+        totalTimeIntervalInSeconds(intervalOn: boolean, addBreak: boolean): number {
+            if (intervalOn && addBreak) {
+                timeAmount = timeAmount;
+                console.log('total interval plus break time in minutes: ', timeAmount);
+                totalTimeInSeconds =timeAmount*60;
+                console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
+                return totalTimeInSeconds;
+            } else if (intervalOn && !addBreak) {
+                console.log('total interval time in minutes: ', timeAmount);
+                totalTimeInSeconds =timeAmount*60;
+                console.log('total interval time in seconds: ', totalTimeInSeconds);
+                return totalTimeInSeconds;
+            } else if (!intervalOn && addBreak) {
+                console.log("error, can't set break without intervals enabled");
+                return (0);
+            } else {
+                console.log('total time in minutes, no intervals: ', timeAmount);
+                totalTimeInSeconds =timeAmount*60;
+                console.log('total time in seconds, no intervals: ', totalTimeInSeconds);
+                return totalTimeInSeconds;
+            }
+        }     
+    }
+    let totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
+    console.log(totalTime);
+    startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
+})
+export {timeObject}
