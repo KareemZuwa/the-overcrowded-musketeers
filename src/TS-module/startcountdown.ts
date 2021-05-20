@@ -25,7 +25,7 @@ let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: bool
         } else if ( minutes > 10 && seconds < 10 ) {
             digitalTimer.innerText = `${minutes}: 0${seconds}`;
         } else {
-            digitalTimer.innerHTML = `${minutes}: ${seconds}`;
+            digitalTimer.innerText = `${minutes}: ${seconds}`;
         }
         
     })
@@ -59,3 +59,4 @@ let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: bool
 }
 //Export the entire timer object and the startcountdown function
 export { timer, startCountdown }
+

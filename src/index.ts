@@ -53,7 +53,7 @@ setTimerForm.addEventListener('submit', (e: Event) => {
         totalTimeIntervalInSeconds(intervalOn: boolean, addBreak: boolean): number {
             if (intervalOn && addBreak) {
                 timeAmount = timeAmount;
-                //console.log('total interval plus break time in minutes: ', timeAmount);
+                console.log('total interval plus break time in minutes: ', timeAmount);
                 totalTimeInSeconds =timeAmount*60;
                 //console.log('total interval plus break time in seconds: ', totalTimeInSeconds);
                 return totalTimeInSeconds;
@@ -76,10 +76,6 @@ setTimerForm.addEventListener('submit', (e: Event) => {
     let totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
     //console.log(timeObject.timeInMinutes);
     analogClock(timeObject.timeInMinutes);
-
-
-
-    
     startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
 })
 

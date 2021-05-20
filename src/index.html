@@ -19,20 +19,28 @@
             <h1 id='time-amount'></h1>
             <a id="increase"> > </a>
             <span>minutes</span>
-        </article>
-        <article id='time-checkboxes'>
-            <input id="intervals-check" type="checkbox" name="intervals" >
-            <label for="intervals">intervals</label>
-            <input id="break-check" type="checkbox" name="break-interval" >
-            <label for="break-interval">5 min break / interval</label>
-        </article>
-        <button>start timer</button>
-    </form>
+            <article id='time-checkboxes'>
+                <label for="intervals" class="checkbox-container">intervals
+                    <input id="intervals-check" type="checkbox" name="intervals" >
+                    <span class="checkmark"></span>
+                </label>
+                <label for="break-interval" class="checkbox-container">5 min break / interval
+                    <input id="break-check" type="checkbox" name="break-interval" >
+                    <span class="checkmark"></span>
+                </label>
+            </article>
+            <button>start timer</button>
+        </form>
+        
 
+        
     <section id="visual-page">
         <progress value="0" max="0" id="pbar" >20</progress>
-        <button id="stop">ABORT TIMER</button>
     </section>
+    <section id="break-page">
+        <img id="breakimage" src="./SVGs/pause-and-breathe-white.svg" alt="pause">
+        <p id="break-countdown">05:00</p>
+        <button id="pause">NO PAUSE, GO NOW!</button>
 
 
     <!-- Analogklocka -->
@@ -64,6 +72,8 @@
         <h1 id="digitalTime"></h1>
     </section>
         <button id="stop">ABORT TIMER</button>
+
     <script src="index.ts"></script>
+
 </body>
 </html>

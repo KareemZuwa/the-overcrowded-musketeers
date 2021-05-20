@@ -36,8 +36,5 @@ start_countdown();
 
 test()
 
-
-
-
-
 export {test}
+
