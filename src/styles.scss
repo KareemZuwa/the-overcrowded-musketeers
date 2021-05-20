@@ -3,6 +3,8 @@
 @import "./styles/settime.scss";
 @import "./styles/startbutton.scss";
 @import "./styles/break-view.scss";
+@import './styles/alarmring.scss';
+
 body {
   margin: 0 auto;
   @include center;
@@ -32,18 +34,22 @@ progress[value]::-webkit-progress-value {
 }
 
 #set-timer-form {
-  display: flex;
+  display: none;
   text-align: center;
 }
 #visual-page {
   display: none;
 }
 #digital-timer {
-  display: flex;
+  display: none;
 }
 #break-page {
   display: none;
 }
 #stop {
   display: none;
+}
+
+#alarmRinging{
+  display: flex;
 }
