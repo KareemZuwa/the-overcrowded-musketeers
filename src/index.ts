@@ -1,6 +1,5 @@
 import { timer, startCountdown } from './TS-module/startcountdown'
 import { test } from './visual';
-import {timing} from './TS-module/break-view'
 
 console.log(test)
 
