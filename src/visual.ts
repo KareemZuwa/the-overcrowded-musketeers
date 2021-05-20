@@ -45,10 +45,10 @@
   const progress: any = document.querySelector('#pbar') //any sätts här för att få value att fungera med nummer.
  console.log(calculate)
 
-let value: number = progress.value
- function start_countdown(calculate){
+
+ function start_countdown(){
      console.log(calculate)
-    
+    let value: number = progress.value
      let reverse_counter: any = calculate; //värde från settimer ist för 20
      let downloadTimer: any = setInterval(function(){
     value = calculate - --reverse_counter;

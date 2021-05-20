@@ -8,7 +8,7 @@ import { Timer } from 'easytimer.js';
      timer.start({countdown: true, startValues: {seconds: timeInSeconds}, target: {seconds: 0}})
      let countdownNumber = timeInSeconds;
      timer.on('secondsUpdated', () => {
-     console.log('timer1 ', countdownNumber--);
+         console.log('timer1 ', countdownNumber--);
      })
      //If intervals is checked, restart timer after first interval ends, else stop timer
      timer.on('targetAchieved', () => {
