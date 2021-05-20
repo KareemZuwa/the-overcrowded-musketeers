@@ -15,6 +15,8 @@ let decreaseBtn: HTMLAnchorElement = document.querySelector('#decrease');
 let intervalChecked: HTMLInputElement = document.querySelector('#intervals-check');
 let breakChecked: HTMLInputElement = document.querySelector('#break-check');
 
+
+
 interface timeInfo {
     timeInMinutes : number;
     intervalOn: boolean;
