@@ -1,4 +1,52 @@
+
+  
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interval App</title>
+    <link rel="stylesheet" href="styles.scss">
+</head>
+<body>
+    <div id="app">
+    </div>
+    <form id='set-timer-form'>
+        <article id='set-time-length'>
+            <a id='decrease'> < </a>
+            <h1 id='time-amount'></h1>
+            <a id="increase"> > </a>
+            <span>minutes</span>
+        </article>
+        <article id='time-checkboxes'>
+            <input id="intervals-check" type="checkbox" name="intervals" >
+            <label for="intervals">intervals</label>
+            <input id="break-check" type="checkbox" name="break-interval" >
+            <label for="break-interval">5 min break / interval</label>
+        </article>
+        <button>start timer</button>
+    </form>
+
+    <section id="visual-page">
+        <button id="stop">ABORT TIMER</button>
+    </section>
+
+    <section id="break-page">
+        <button id="pause"></button>
+        <img src="./SVGs/pause-and-breathe-white.svg" alt="">
+        <p ></p>
+        <button id="stop">ABORT TIMER</button>
+    </section>
+
+    <script src="index.ts"></script>
+</body>
+</html>
+
+
+
+<!-- NYA -->
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,20 +76,17 @@
             </article>
             <button>start timer</button>
         </form>
-        
+        <section id="visual-page">
+            <progress value="0" max="0" id="pbar" >20</progress>
+            <button id="stop">ABORT TIMER</button>
+        </section>
 
-        
-    <section id="visual-page">
-        <progress value="0" max="0" id="pbar" >20</progress>
-        <button id="stop">ABORT TIMER</button>
-    </section>
-
-    <section id="break-page">
-        <button id="pause"></button>
-        <img src="./SVGs/pause-and-breathe-white.svg" alt="">
-        <p ></p>
-        <button id="stop">ABORT TIMER</button>
-    </section>
+        <section id="break-page">
+            <button id="pause"></button>
+            <img src="./SVGs/pause-and-breathe-white.svg" alt="">
+            <p ></p>
+            <button id="stop">ABORT TIMER</button>
+        </section>
 
     <script src="index.ts"></script>
     </div>
@@ -54,4 +99,4 @@
     
     <script type="module" src="index.ts"></script>
 </body>
-</html>
+</html> -->

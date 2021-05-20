@@ -1,42 +1,69 @@
-import { timeObject } from './index'
+import { totalTimeInSeconds } from './index'
 import { Timer } from 'easytimer.js'
-import { timer } from './TS-module/startcountdown'
+import { startCountdown } from './TS-module/startcountdown'
 import * as digitalpause from './TS-module/digitalpause'
 
 let El: any = document.querySelector('#break-page')
 
-let test = () =>{
-
-    timer.on('secondsUpdated', () =>{
-    let minutes = timer.getTimeValues().minutes
-    let seconds = timer.getTimeValues().seconds
-    let calculate: Number = minutes * 60 + seconds
-    console.log(calculate)
-    El.innerHTML = '';
-    El.insertAdjacentHTML('beforeend', digitalpause.render(timer));
-
+console.log(totalTimeInSeconds)
 const progress: any = document.querySelector('#pbar') //any sätts här för att få value att fungera med nummer.
-console.log(timeObject)
+// let prog: HTMLElement = document.createElement('progress');
+//     prog.setAttribute('value', '20');
+//     prog.setAttribute('max', '20');
+//     document.getElementById('visual-page').appendChild(prog)
 
-function start_countdown(){
-    console.log(calculate)
-    
-    let reverse_counter: any = calculate; //värde från settimer ist för 20
+function timing(){
+    console.log()
+    let reverse_counter: any = 20; //värde från settimer ist för 20
     let downloadTimer: any = setInterval(function(){
-    progress.value = calculate - --reverse_counter; 
+    progress.value = 20 - --reverse_counter; 
     if(reverse_counter <= 0)
     clearInterval(downloadTimer);
-    console.log(timeObject)
 },1000);
 }
-start_countdown();
-})
-}
+timing()
+export {timing}
 
-test()
+// import { timeObject } from './index'
+// import { Timer } from 'easytimer.js'
+// import { timer } from './TS-module/startcountdown'
+// import * as digitalpause from './TS-module/digitalpause'
+
+// let El: any = document.querySelector('#break-page')
+
+// let test = () =>{
+
+// //     timer.on('secondsUpdated', () =>{
+// //     let minutes = timer.getTimeValues().minutes //får ut minuter & sekunder
+// //     let seconds = timer.getTimeValues().seconds
+// //     let calculate: Number = minutes * 60 + seconds //omvandlar för progress bar
+// //     console.log(calculate)
+// //     El.innerHTML = '';
+// //     El.insertAdjacentHTML('beforeend', digitalpause.render(timer));
+
+//  const progress: any = document.querySelector('#pbar') //any sätts här för att få value att fungera med nummer.
+// // console.log(calculate)
+
+
+// function start_countdown(calculate){
+//     console.log(calculate)
+    
+//     let reverse_counter: any = 20; //värde från settimer ist för 20
+//     let downloadTimer: any = setInterval(function(){
+//     progress.value = 20 - --reverse_counter;
+//     if(reverse_counter <= 0)
+//     clearInterval(downloadTimer);
+//     // console.log(timeObject)
+// },1000);
+// }
+// // start_countdown(calculate);
+// // })
+//  }
+
+// test()
+// export {test}
 
 
 
 
 
-export {test}
