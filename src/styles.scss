@@ -1,7 +1,7 @@
 @import "./styles/typography.scss";
 @import "./styles/variables.scss";
 @import "./styles/settime.scss";
-
+@import "./styles/startbutton.scss";
 body {
   margin: 0 auto;
   @include center;
@@ -30,11 +30,16 @@ progress[value]::-webkit-progress-value {
   background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
-// #visual-page {
-//   display: none;
-// }
-// #break-page {
-//   // display: none;
-// }
-
-@import "./styles/startbutton.scss";
+#set-timer-form {
+  display: block;
+  text-align: center;
+}
+#visual-page {
+  display: none;
+}
+#digital-timer {
+  display: block;
+}
+#break-page {
+  display: none;
+}
