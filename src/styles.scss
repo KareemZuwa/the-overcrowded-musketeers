@@ -2,6 +2,7 @@
 @import "./styles/variables.scss";
 @import "./styles/settime.scss";
 @import "./styles/startbutton.scss";
+@import "./styles/break-view.scss";
 body {
   margin: 0 auto;
   @include center;
@@ -31,15 +32,18 @@ progress[value]::-webkit-progress-value {
 }
 
 #set-timer-form {
-  display: block;
+  display: flex;
   text-align: center;
 }
 #visual-page {
   display: none;
 }
 #digital-timer {
-  display: block;
+  display: flex;
 }
 #break-page {
+  display: none;
+}
+#stop {
   display: none;
 }
