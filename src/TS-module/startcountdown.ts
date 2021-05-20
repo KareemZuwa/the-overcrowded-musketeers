@@ -2,6 +2,8 @@ import { Timer } from 'easytimer.js';
 
 let timer: Timer = new Timer();
 
+let pauseTimer: Timer = new Timer();
+
 let digitalTimer: HTMLHeadingElement = document.querySelector('#digitalTime')
 
 let abortBtn : HTMLButtonElement = document.querySelector('#stop')
@@ -9,6 +11,8 @@ let abortBtn : HTMLButtonElement = document.querySelector('#stop')
 // Start countdown on click, with times in seconds from form as arguments
 let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: boolean) => {
     timer.start({countdown: true, startValues: {seconds: timeInSeconds}, target: {seconds: 0}})
+    pauseTimer.start({countdown: true, startValues: {seconds: 50}, target: {seconds: 0}})
+    pauseTimer.pause()
     let countdownNumber:number = timeInSeconds;
     timer.on('secondsUpdated', () => {
        
@@ -34,19 +38,23 @@ let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: bool
         countdownNumber = timeInSeconds;
         if (intervalOn && addBreak) {
             timer.pause()
-            let pausInterval = setInterval(() => {
-                console.log('paus');
-            }, 1000)
-             setTimeout(() => {
-                 clearInterval(pausInterval)
-                timer.reset();
-                console.log('pause over');            
-            }, 300000);
+            pauseTimer.reset()
         } else if (intervalOn && !addBreak) {
             timer.reset();
         } else {
             timer.stop();
         }
+    })
+
+    pauseTimer.on('secondsUpdated', () => {
+        console.log('paus');
+    })
+    pauseTimer.on('targetAchieved', () => {
+        pauseTimer.pause()
+        pauseTimer.reset()
+        pauseTimer.stop()
+        timer.reset();
+        console.log('pause over'); 
     })
 
     abortBtn.addEventListener('click', () => {
