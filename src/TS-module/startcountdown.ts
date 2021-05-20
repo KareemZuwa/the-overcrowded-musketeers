@@ -4,6 +4,8 @@ let timer: Timer = new Timer();
 
 let digitalTimer: HTMLHeadingElement = document.querySelector('#digitalTime')
 
+let abortBtn : HTMLButtonElement = document.querySelector('#stop')
+
 // Start countdown on click, with times in seconds from form as arguments
 let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: boolean) => {
     timer.start({countdown: true, startValues: {seconds: timeInSeconds}, target: {seconds: 0}})
@@ -45,6 +47,13 @@ let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: bool
         } else {
             timer.stop();
         }
+    })
+
+    abortBtn.addEventListener('click', () => {
+        console.log('timer stoppad', timer.isRunning());
+        timer.stop()
+        console.log('timer stoppad', timer.isRunning());
+        
     })
 }
 //Export the entire timer object and the startcountdown function
