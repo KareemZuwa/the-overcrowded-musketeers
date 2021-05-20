@@ -10,11 +10,13 @@
 }
 
 #breakimage {
-  margin-top: 7rem;
+  position: absolute;
+  top: 24rem;
 }
 
 p {
-  margin: 2rem 0rem 5rem;
+  position: absolute;
+  top: 32rem;
   font-size: 24px;
   font-family: "PT Sans", sans-serif;
   font-weight: 300;
@@ -23,6 +25,8 @@ p {
 }
 
 #pause {
+  position: absolute;
+  top: 40rem;
   opacity: $opacityLevel;
   appearance: none;
   background: none;
@@ -36,4 +40,8 @@ p {
   font-family: "PT Sans", sans-serif;
   font-weight: bold;
   letter-spacing: 0.1em;
+}
+
+#svg{
+  position: absolute;
 }
