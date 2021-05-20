@@ -15,4 +15,6 @@ timer.on('secondsUpdated', () =>{
         El.innerHTML = '';
         El.insertAdjacentHTML('beforeend', digitalpause.render(timer));
 
+
 })
+

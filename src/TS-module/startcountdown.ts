@@ -12,8 +12,9 @@ let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: bool
     let countdownNumber:number = timeInSeconds;
     timer.on('secondsUpdated', () => {
        
-        console.log('timer1 ', countdownNumber--);
-        console.log('modulus', countdownNumber % 60);
+       //console.log('timer1 ', countdownNumber--);
+       //console.log('modulus', countdownNumber % 60);
+       //countdownNumber--
         let seconds:number = countdownNumber % 60
         let minutesFloat: any = countdownNumber / 60
         let minutes:any = parseInt(minutesFloat)
