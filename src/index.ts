@@ -5,13 +5,6 @@ import { analogClock, toWords, globalAnalogTimerVariable } from './TS-module/ana
 import  exportNav  from "../src/TS-module/navigation";
 
 
-
-
-
-
-
-
-
 import { Timer } from 'easytimer.js';
 
 let timer: Timer = new Timer();
