@@ -1,0 +1,39 @@
+@import "./styles/variables.scss";
+
+#break-page {
+  @include center;
+  flex-direction: column;
+  background-color: $black;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+}
+
+#breakimage {
+  margin-top: 7rem;
+}
+
+p {
+  margin: 2rem 0rem 5rem;
+  font-size: 24px;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 300;
+  color: $white;
+  opacity: $opacityLevel;
+}
+
+#pause {
+  opacity: $opacityLevel;
+  appearance: none;
+  background: none;
+  display: inline-block;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid $white;
+  color: $white;
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "PT Sans", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
