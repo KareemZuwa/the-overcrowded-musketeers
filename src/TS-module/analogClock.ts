@@ -1,6 +1,6 @@
 const radius : number = 6;
 let resetTimer : boolean = false;
-let globalAnalogTimerVariable : number = 0;
+export let globalAnalogTimerVariable : number = 0;
 
 var a = ['noll','en ','två ','tre ','fyra ', 'fem ','sex ','sju ','åtta ','nio ','tio ','elva ','tolv ','tretton ','fjorton ','femton ','sexton ','sjutton ','arton ','nitton '];
 var b = ['tjugo','trettio','fyrtio','femtio'];
@@ -38,7 +38,7 @@ const setClockHands = (second, minute, hour, minutesToCountDown) => {
 
     let secondElm    : HTMLDivElement = document.querySelector('.clock__hand--second');
     let minuteElm    : HTMLDivElement = document.querySelector('.clock__hand--minute');
-    const talTillOrd : HTMLDivElement = document.querySelector('#ord');
+    const talTillOrd : HTMLDivElement = document.querySelector('#talTillOrd');
 
     let currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
@@ -70,11 +70,11 @@ const setClockHands = (second, minute, hour, minutesToCountDown) => {
         
         let sekunder : number = Math.floor(difference_ms % 60);
         
-        difference_ms = difference_ms/60; 
+        difference_ms = difference_ms / 60; 
         
         let minuter : number = Math.floor(difference_ms % 60);
         
-        talTillOrd.innerHTML = (`${toWords(minuter)} minuter och ${toWords(sekunder)} sekunder kvar`).toUpperCase();
+        talTillOrd.innerText = (`${toWords(minuter)} minuter och ${toWords(sekunder)} sekunder kvar`).toUpperCase();
 
     }, 1000);
 }

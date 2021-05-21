@@ -13,8 +13,5 @@ function render(timer: any, msg?: String ) :string {
     return digiclocksection;
 }
 
-<<<<<<< HEAD
 export { render }
-=======
-export { render }
->>>>>>> main-page
+

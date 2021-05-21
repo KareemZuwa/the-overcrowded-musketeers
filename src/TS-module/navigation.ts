@@ -1,39 +1,66 @@
-const exportNav = () : HTMLUListElement => {
+const exportNav = () : HTMLDivElement => {
+
+    let divToRenderIn : HTMLDivElement = document.querySelector('#divToRenderIn');
+    let abortButton : HTMLButtonElement = document.querySelector('#stop');
 
     const linkData = [
-        { text : 'set-timer-form', textLabel : 'ANALOG TIMER'},
-        { text : 'digital-timer', textLabel : 'DIGITAL TIMER'},
-        { text : 'visual-page', textLabel : 'VISUAL TIMER'},
-        { text : 'talTillOrd', textLabel : 'TEXT TIMER'},
-        { text : '', textLabel : 'CIRCLES TIMER'}
+        { ref : document.querySelector('#analogClock'), textLabel : 'ANALOG TIMER'},
+        { ref : document.querySelector('#digital-timer'), textLabel : 'DIGITAL TIMER'},
+        { ref : document.querySelector('#visual-page'), textLabel : 'VISUAL TIMER'},
+        { ref : document.querySelector('#talTillOrd'), textLabel : 'TEXT TIMER'}
+        { ref : document.querySelector('#circles'), textLabel : 'CIRCLE TIMER'}
+    
     ]
 
+    const div : HTMLDivElement = document.createElement('div');
+    div.id = "menuToggle"
+
+    //const label : HTMLLabelElement = document.createElement('label');
+    //const span : HTMLSpanElement = document.createElement('span');
+
+    const checkbox : HTMLInputElement = document.createElement('input');
+    checkbox.type = 'checkbox';
+
+    //label.appendChild(checkbox);
+    //label.appendChild(span);
+
+    //console.log(label);
+
+    div.appendChild(checkbox);
+
+    for (let index : number = 0; index < 3; index++) {
+        const span = document.createElement('span');
+        div.append(span)
+    }
+
     const ul : HTMLUListElement = document.createElement('ul');
-    ul.className = "nav";
+    ul.id = "NavBar";
 
     for(let i : number = 0; i < linkData.length; i++)
     {
-        const li : HTMLLIElement = document.createElement('li');
         const a : HTMLAnchorElement = document.createElement('a');
+        const li : HTMLLIElement = document.createElement('li');
 
-        a.href = `#${linkData[i].text}`;
-        a.innerText = `${linkData[i].textLabel}`;
-        li.appendChild(a);
-        ul.append(li)
+        a.href = "#";
+
+        //console.log(object)
+        a.addEventListener('click', () => {
+
+            const divToRenderInChildren = Array.from(divToRenderIn.children);
+            divToRenderInChildren.forEach(child => {
+                child !== document.querySelector('#menuToggle') ? divToRenderIn.removeChild(child) : null;
+            });
+
+            divToRenderIn.appendChild(linkData[i].ref);
+            abortButton.style.display = "flex"
+        });
+
+        li.textContent  = `${linkData[i].textLabel}`;
+        a.appendChild(li);
+        ul.appendChild(a)
     }
-
-    return ul;
+    div.appendChild(ul);
+    return div;
 }
 
-const openNav = () => {
-    document.querySelector('.sideNav-mySidenav').setAttribute('width', '70%');
-    document.querySelector('.backdrop').setAttribute('display', 'block');
-}
-
-const closeNav = () => {
-    document.querySelector('.sideNav-container').setAttribute('width', '0');
-    document.querySelector('.backdrop').setAttribute('display', 'none');
-}
-
-
-export  { exportNav, openNav, closeNav } ;
+export  default exportNav;

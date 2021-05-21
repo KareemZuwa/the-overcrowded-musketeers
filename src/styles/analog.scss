@@ -5,115 +5,147 @@
 	justify-content: center;
 	align-items: center;
 	width: 600px;
+	display: flex;
+	flex-direction: column;
 }
+ 
+ #menuToggle
+ {
+   display: block;
+   position: relative;
+   top: 50px;
+   left: 50px;
+   z-index: 1;
+   -webkit-user-select: none;
+   user-select: none;
+ }
+ 
+ #menuToggle a
+ {
+   text-decoration: none;
+   color: #232323;
+   transition: color 0.3s ease;
+ }
+ 
+ #menuToggle a:hover
+ {
+   color: black;
+ }
+ 
+ #menuToggle input
+ {
+   display: block;
+   width: 40px;
+   height: 32px;
+   position: absolute;
+   top: -7px;
+   left: -5px;
+   
+   cursor: pointer;
+   
+   opacity: 0; /* hide this */
+   z-index: 2; /* and place it over the hamburger */
+   
+   -webkit-touch-callout: none;
+ }
+ 
+ /*
+  * Just a quick hamburger
+  */
+ #menuToggle span
+ {
+   display: block;
+   width: 33px;
+   height: 4px;
+   margin-bottom: 5px;
+   position: relative;
+   
+   background: black;
+   border-radius: 3px;
+   z-index: 1;
+   transform-origin: 4px 0px;
+   transition:  transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				opacity 0.55s ease;
+ }
+ 
+ #menuToggle span:first-child
+ {
+   transform-origin: 0% 0%;
+ }
+ 
+ #menuToggle span:nth-last-child(2)
+ {
+   transform-origin: 0% 100%;
+ }
+ 
+ /* 
+  * Transform all the slices of hamburger
+  * into a crossmark.
+  */
+ #menuToggle input:checked ~ span
+ {
+   opacity: 1;
+   transform: rotate(45deg) translate(-2px, -1px);
+   background: #232323;
+ }
+ 
+ input[check]{
+	 background-image: '../SVGs/navicon-black.svg';
+ }
+ /*
+  * But let's hide the middle one.
+  */
+ #menuToggle input:checked ~ span:nth-last-child(3)
+ {
+   opacity: 0;
+   transform: rotate(0deg) scale(0.2, 0.2);
+ }
+ 
+ /*
+  * Ohyeah and the last one should go the other direction
+  */
+ #menuToggle input:checked ~ span:nth-last-child(2)
+ {
+   transform: rotate(-45deg) translate(0, -1px);
+ }
+ 
+ /*
+  * Make this absolute positioned
+  * at the top left of the screen
+  */
+ #NavBar
+ {
+   position: absolute;
+   margin: -100px 0 0 -50px;
+   padding: 50px;
+   padding-top: 125px;
+   
 
-ul.nav {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;}
+   list-style-type: none;
+   -webkit-font-smoothing: antialiased;
+   /* to stop flickering of text in safari */
+   
+   transform-origin: 0% 0%;
+   transform: translate(-100%, 0);
+   
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+ }
+ 
+ #NavBar li
+ {
+   padding: 10px 0;
+   font-size: 22px;
+ }
+ 
+ /*
+  * And let's slide it in from the left
+  */
+ #menuToggle input:checked ~ ul
+ {
+   transform: none;
+ }
 
-a {
-	color: black;
-	text-decoration: solid;
-	text-transform: uppercase;
-	font-weight: bold;
-  }
-
-a:hover {
-	background-color: white;
-	text-decoration: underline;
-}
-  
-a:active {
-	background-color: white;
-}
-  
-a:visited {
-	background-color: white;
-}
-
-/* Navigation start */ 
-
-.backdrop-container{
-    display: none;
-    position: fixed;
-    z-index: 2; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4);  
-    -webkit-animation: fadeIn 1.2s ease-in-out;
-    animation: fadeIn 1.2s ease-in-out;
-}
-
-nav{
-    width: 100%;
-    height: 10vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: white;
-    z-index: 1;
-}
-
-.mobile-nav-open-icon{
-    font-size: 2rem;
-    cursor: pointer;
-    margin-right: 2rem;
-    color: black;
-    margin-left:3rem;
-}
-
-.sidenav-container {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.sidenav-container a {
-    text-decoration: none;
-    font-size: 1rem;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-    margin: 10px 0;
-}
-
-.sidenav-container a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav-container .closebtn {
-    font-size: 3rem;
-    font-weight: 700;
-    color:#C9002B ;
-    padding-right: 1rem;
-} 
-
-.sidenav-container .drawer-close-button{
-    height: 3rem;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 3rem;
-}
 
 /* Navigation end */
 
