@@ -6,11 +6,12 @@
 @import "./styles/analog.scss";
 @import "./styles/circles.scss";
 @import "./styles/alarmring.scss";
-
+@import "./styles/digital-timer.scss";
 
 body {
   margin: 0 auto;
   @include center;
+  background-color: $grey;
 }
 
 //progress bar//
@@ -43,14 +44,19 @@ progress[value]::-webkit-progress-value {
 #visual-page {
   display: flex;
   #progbar {
-    background-color: black;
-    height: 200px; 
-    width:200px; 
-    }
+    position:absolute;
+    top:0;
+    background-color: rgba(0, 0, 0, 0.76);
+    height: 100vh;
+    width: 100vw;
+  }
 }
 #talTillOrd {
   display: flex;
   text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  width: 100vw;
 }
 #digital-timer {
   display: flex;
@@ -67,7 +73,27 @@ progress[value]::-webkit-progress-value {
   font-size: 1rem;
   letter-spacing: 0.1em;
 }
-#alarmRinging{
+#alarmRinging {
   display: none;
+}
 
+#app {
+  width: 100vw;
+}
+
+#NavBar {
+  background: #222222b2;
+  width: 100vw;
+  height: 100vh;
+}
+
+#NavBar li {
+  color: white;
+  text-align: center;
+  margin-left:-6.5rem;
+  padding-top: 2rem;
+}
+
+#divToRenderIn {
+  margin: 0 auto;
 }
