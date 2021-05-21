@@ -9,6 +9,8 @@ let digitalTimer: HTMLHeadingElement = document.querySelector('#digitalTime')
 let abortBtn : HTMLButtonElement = document.querySelector('#stop')
 let formBG : HTMLFormElement = document.querySelector('form')
 
+let circleNumber:any = 11;
+let circle: any = document.querySelector(`.circle${circleNumber}`)
 
 // Start countdown on click, with times in seconds from form as arguments
 let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: boolean) => {
@@ -18,20 +20,17 @@ let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: bool
     let countdownNumber:number = timeInSeconds;
    let label: HTMLDivElement  = document.querySelector('#progbar')
     timer.on('secondsUpdated', () => {
-        let circleNumber:any;
+       
         let procent = (countdownNumber / timeInSeconds)*100
         //console.log('timer values: ', timer.getTimeValues().seconds, 'procent: ', procent);
-        label.style.height = `${procent}vh`
+        label.style.height = `${procent}vh`;
         let division:any = procent / 11
          circleNumber = parseInt( division ) +1
-        let circle: any = document.querySelector(`.circle${circleNumber}`)
+        //let circle = document.querySelector(`.circle${circleNumber}`)
         //console.log(’ rad 35 ’, ‘Circlenumber ‘, circleNumber, circle );
         circle.style.backgroundColor =`#999999`
         countdownNumber--;
 
-       
-        console.log('timer1 **', countdownNumber--);
-        //console.log('modulus', countdownNumber % 60);
         let seconds:number = countdownNumber % 60
         let minutesFloat: any = countdownNumber / 60
         let minutes:any = parseInt(minutesFloat)
@@ -70,6 +69,7 @@ let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: bool
         pauseTimer.reset()
         pauseTimer.stop()
         timer.reset();
+        timer.getTimeValues().minutes
         //console.log('pause over'); 
     })
 
