@@ -6,12 +6,18 @@ let digitalTimer: HTMLHeadingElement = document.querySelector('#digitalTime')
 
 let abortBtn : HTMLButtonElement = document.querySelector('#stop')
 
+let label = document.querySelector('#prog')
+
 // Start countdown on click, with times in seconds from form as arguments
 let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: boolean) => {
     timer.start({countdown: true, startValues: {seconds: timeInSeconds}, target: {seconds: 0}})
     let countdownNumber:number = timeInSeconds;
     timer.on('secondsUpdated', () => {
-       
+        let procent = (countdownNumber / timeInSeconds)*100
+        let nyProcent = 100 - procent
+        console.log('timer values: ', timer.getTimeValues().seconds, 'procent: ', procent);
+        label.style.height = `${nyProcent}vh`;
+
         console.log('timer1 ', countdownNumber--);
         console.log('modulus', countdownNumber % 60);
         let seconds:number = countdownNumber % 60

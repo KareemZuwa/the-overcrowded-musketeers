@@ -25,6 +25,7 @@
                     <input id="break-check" type="checkbox" name="break-interval" >
                     <span class="checkmark"></span>
                 </label>
+                
             </article>
             <button>start timer</button>
         </form>
@@ -32,7 +33,9 @@
 
         
     <section id="visual-page">
-        <progress value="0" max="0" id="pbar" >20</progress>
+        <div id='prog'>x</div>
+        <!-- <progress value="0" max="0" id="pbar" >20</progress> -->
+        <button id="stop">ABORT TIMER</button>
     </section>
 
     <section id="break-page">
@@ -54,7 +57,7 @@
 
     <section id="alarmRinging">
         <button onclick="" id="Back2Timer">SET NEW TIMER</button>
-        <img id="svg" src="./SVGs/timesup-white.svg" alt="">
+        <img src="./SVGs/timesup-white.svg" alt="">
         <img id="svg" src="./SVGs/ellipse1.svg" alt="">
         <img id="svg" src="./SVGs/ellipse2.svg" alt="">
         <img id="svg" src="./SVGs/ellipse3.svg" alt="">
