@@ -20,7 +20,7 @@ let circlesDiv    : HTMLDivElement = document.querySelector('#circles');
 // create a new instance of EasyTimer
 export const timer : Timer = new Timer();
 
-export const StartCountDown = (numberOfSeconds : number = 60, allowIntervals : boolean, allowFiveMinutesIntervals : boolean) => {
+export const StartCountDown = (numberOfSeconds : number, allowIntervals : boolean, allowFiveMinutesIntervals : boolean) => {
 
     // Init the analog and circle pages
     initAnalogClock();

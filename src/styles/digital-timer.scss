@@ -4,16 +4,17 @@
   @include center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: $grey;
   height: 100vh;
   width: 100vw;
 
   img {
-    margin-top: 1.5rem;
+    position:absolute;
+    top: 3.5rem;
   }
 
   h1 {
-    margin-bottom: 27rem;
+    margin-bottom: 18rem;
   }
 }
