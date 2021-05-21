@@ -3,6 +3,11 @@
 @import "./styles/settime.scss";
 @import "./styles/startbutton.scss";
 @import "./styles/break-view.scss";
+@import "./styles/analog.scss";
+@import "./styles/circles.scss";
+@import "./styles/alarmring.scss";
+
+
 body {
   margin: 0 auto;
   @include center;
@@ -36,14 +41,33 @@ progress[value]::-webkit-progress-value {
   text-align: center;
 }
 #visual-page {
-  display: none;
+  display: flex;
+  #progbar {
+    background-color: black;
+    height: 200px; 
+    width:200px; 
+    }
+}
+#talTillOrd {
+  display: flex;
+  text-align: center;
 }
 #digital-timer {
   display: flex;
 }
 #break-page {
-  display: none;
+  display: flex;
 }
 #stop {
+  position: absolute;
+  left: 30;
+  bottom: 11.5rem;
+  opacity: $opacityLevel;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+#alarmRinging{
   display: none;
+
 }
