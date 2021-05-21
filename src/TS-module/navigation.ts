@@ -7,7 +7,7 @@ const exportNav = () : HTMLDivElement => {
         { ref : document.querySelector('#analogClock'), textLabel : 'ANALOG TIMER'},
         { ref : document.querySelector('#digital-timer'), textLabel : 'DIGITAL TIMER'},
         { ref : document.querySelector('#visual-page'), textLabel : 'VISUAL TIMER'},
-        { ref : document.querySelector('#talTillOrd'), textLabel : 'TEXT TIMER'}
+        { ref : document.querySelector('#talTillOrd'), textLabel : 'TEXT TIMER'},
         { ref : document.querySelector('#circles'), textLabel : 'CIRCLE TIMER'}
     
     ]
