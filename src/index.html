@@ -12,7 +12,7 @@
 
     </div>
     <button id="stop" style="display:none" >ABORT TIMER</button>
-    <div style="display: none;">
+    <div style="display: none;" id="holderDiv">
         <!--Loading Page-->
         <div id="app">
             <a href="#" id="startImage">
@@ -29,25 +29,27 @@
         </section>
 
         <!-- set time form start -->
-        <form id='set-timer-form'>
-            <article id='set-time-length'>
-                <a id='decrease'></a>
-                <h1 id='time-amount'></h1>
-                <a id="increase"></a>
-            </article>
-            <span>minutes</span>
-            <article id='time-checkboxes'>
-                <label for="intervals" class="checkbox-container">intervals
-                    <input id="intervals-check" type="checkbox" name="intervals" >
-                    <span class="checkmark"></span>
-                </label>
-                <label for="break-interval" class="checkbox-container">5 min break / interval
-                    <input id="break-check" type="checkbox" name="break-interval" >
-                    <span class="checkmark"></span>
-                </label>
+        <section id="setTimeFormSection">
+            <form id='set-timer-form'>
+                <article id='set-time-length'>
+                    <a id='decrease'></a>
+                    <h1 id='time-amount'></h1>
+                    <a id="increase"></a>
                 </article>
-                <button id="startTimerBtn" type="button">start timer</button>
-        </form>
+                <span>minutes</span>
+                <article id='time-checkboxes'>
+                    <label for="intervals" class="checkbox-container">intervals
+                        <input id="intervals-check" type="checkbox" name="intervals" >
+                        <span class="checkmark"></span>
+                    </label>
+                    <label for="break-interval" class="checkbox-container">5 min break / interval
+                        <input id="break-check" type="checkbox" name="break-interval" >
+                        <span class="checkmark"></span>
+                    </label>
+                </article>
+                <button id="startTimerBtn" type="submit">start timer</button>
+            </form>
+        </section>
 
         <!-- Alarming Page -->
         <section id="alarmRinging">
@@ -56,20 +58,12 @@
             <img id="svg" src="./SVGs/ellipse2.svg" alt="">
             <img id="svg" src="./SVGs/ellipse3.svg" alt="">
             <img id="svg" src="./SVGs/ellipse4.svg" alt="">
-            <button onclick="" id="Back2Timer">SET NEW TIMER</button>
+            <button id="Back2Timer">SET NEW TIMER</button>
         </section>
 
         <!-- visual page start -->
         <section id="visual-page">
-            <!--<progress value="0" max="0" id="pbar" >20</progress> --> 
-            <article id="progbar"></article>
-        </section>
-
-         <!-- break page start -->
-        <section id="break-page">
-            <img id="breakimage" src="./SVGs/pause-and-breathe-white.svg" alt="pause">
-            <p id="break-countdown">05:00</p>
-            <button id="pause">NO PAUSE, GO NOW!</button>
+            <div id="progbar" style="height: 100vh; width:100%;background-color: black;"></div>
         </section>
 
         <!-- Analogklocka -->
@@ -84,36 +78,24 @@
         </section>
 
         <!-- Tal till Ord -->
-        <div id="talTillOrd" style="display: flex;justify-content:center;align-items:center;height:100vh">
+        <div id="talTillOrd" style="display: flex;justify-content:center;align-items:center;height:100vh; width:100%">
 
         </div>
 
         <!--Circle Clock-->
-        <section id="circles">
-            <img src="SVGs/nav-interval-black.svg" alt="interval-black">
-            <article class="circle1"></article>
-            <article class="circle2"></article>
-            <article class="circle3"></article>
-            <article class="circle4"></article>
-            <article class="circle5"></article>
-            <article class="circle6"></article>
-            <article class="circle7"></article>
-            <article class="circle8"></article>
-            <article class="circle9"></article>
-            <article class="circle10"></article>
-            <article class="circle11"></article>
+        <section id="circles" style="display: flex;justify-content:center;align-items:center;height:100vh; width:100%">
          </section>
 
         <!--Break View-->
-            <section id="break-page">
-                <img id="breakimage" src="./SVGs/pause-and-breathe-white.svg" alt="pause">
-                <p id="break-countdown">05:00</p>
-                <button id="pause">NO PAUSE, GO NOW!</button>
-                <img id="svg" src="./SVGs/ellipse1.svg" alt="">
-                <img id="svg" src="./SVGs/ellipse2.svg" alt="">
-                <img id="svg" src="./SVGs/ellipse3.svg" alt="">
-                <img id="svg" src="./SVGs/ellipse4.svg" alt="">
-            </section>
+        <section id="break-page">
+            <img id="breakimage" src="./SVGs/pause-and-breathe-white.svg" alt="pause">
+            <p id="break-countdown"></p>
+            <button id="pause">NO PAUSE, GO NOW!</button>
+            <img id="svg" src="./SVGs/ellipse1.svg" alt="">
+            <img id="svg" src="./SVGs/ellipse2.svg" alt="">
+            <img id="svg" src="./SVGs/ellipse3.svg" alt="">
+            <img id="svg" src="./SVGs/ellipse4.svg" alt="">
+        </section>
 
         <!--Digital Timer-->
         <section id="digital-timer" style="justify-content: center; display: flex;">
@@ -122,13 +104,13 @@
         </section>
 
         <!--Alarm View-->
-            <section id="alarmRinging">
+        <section id="alarmRinging" style="background-color: black;">
             <button onclick="" id="Back2Timer">SET NEW TIMER</button>
-            <img id="svg" src="./SVGs/timesup-white.svg" alt="">
-            <img id="svg" src="./SVGs/ellipse1.svg" alt="">
-            <img id="svg" src="./SVGs/ellipse2.svg" alt="">
-            <img id="svg" src="./SVGs/ellipse3.svg" alt="">
-            <img id="svg" src="./SVGs/ellipse4.svg" alt="">
+            <img class="svg" src="./SVGs/timesup-white.svg" alt="" />
+            <img class="svg" src="./SVGs/ellipse1.svg" alt="" />
+            <img class="svg" src="./SVGs/ellipse2.svg" alt="" /> 
+            <img class="svg" src="./SVGs/ellipse3.svg" alt="" />
+            <img class="svg" src="./SVGs/ellipse4.svg" alt="" />
         </section>
         
        

@@ -3,7 +3,12 @@ import { test } from './visual';
 import { analogClock, toWords, globalAnalogTimerVariable } from './TS-module/analogClock';
 import  exportNav  from "../src/TS-module/navigation";
 
+
+import { StartCountDown, timer as EasyTimer } from "../src/TS-module/startCount";
+
 let setTimerForm: HTMLFormElement = document.querySelector('#set-timer-form');
+
+//console.log(setTimerForm);
 
 let timeAmountText = document.getElementById('set-time-length');
 let timeAmount: number = 10;
@@ -21,6 +26,9 @@ let analogClockDiv : HTMLDivElement = document.querySelector('#analogClock');
 let startTimerButton : HTMLDivElement = document.querySelector('#startTimerBtn');
 let startDiv : HTMLDivElement = document.querySelector('#app');
 let abortButton : HTMLButtonElement = document.querySelector('#stop');
+let backToTimer : HTMLButtonElement = document.querySelector('#Back2Timer');
+let breakPage : HTMLButtonElement = document.querySelector('#break-page');
+let breakPageButton : HTMLButtonElement = document.querySelector('#break-page');
 
 divToRenderIn.appendChild(startDiv);
 
@@ -45,15 +53,22 @@ startImage.addEventListener('click', () => {
     deRenderDivToRenderIn(setTimerForm, false);
 });
 
-startTimerButton.addEventListener('click', () => {
-    deRenderDivToRenderIn(analogClockDiv, true);
-    abortButton.style.display = "flex"
-});
+//startTimerButton.addEventListener('click', () => {
+   // deRenderDivToRenderIn(analogClockDiv, true);
+    //analogClock(timer, timeAmount);
+ //   abortButton.style.display = "flex"
+//});
 
 abortButton.addEventListener('click', () => {
+    
+    // stop the timer
+    EasyTimer.stop();
+
+    // Render to a set Timer form
     deRenderDivToRenderIn(setTimerForm, false);
+
+    // Incognitize the abort Button once again
     abortButton.style.display = "none"
-    clearInterval(globalAnalogTimerVariable);
 })
 
 interface timeInfo {
@@ -81,11 +96,20 @@ const decreaseTime = () => {
 increaseBtn.onclick = () => increaseTime();
 decreaseBtn.onclick = () => decreaseTime();
 
+backToTimer.addEventListener('click', () => {
+    deRenderDivToRenderIn(setTimerForm, false);
+    abortButton.style.display = "none"
+});
+
+breakPageButton.addEventListener('click', () => {
+    EasyTimer.reset();
+})
+
 
 //When submit is clicked, a new timeInfo interface is created. The total amount of seconds is calculated, including break-time
 //The startCountdown-function is called with information from the interface as arguments.
 
-setTimerForm.addEventListener('click', (e: Event) => {
+startTimerButton.addEventListener('click', (e: Event) => {
     e.preventDefault();
     timeObject = {
         timeInMinutes : timeAmount,
@@ -116,8 +140,13 @@ setTimerForm.addEventListener('click', (e: Event) => {
     }
     let totalTime = timeObject.totalTimeIntervalInSeconds(timeObject.intervalOn, timeObject.addBreak)
     //console.log(timeObject.timeInMinutes);
-    analogClock(timeObject.timeInMinutes);
-    startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
+    //analogClock(timeObject.timeInMinutes);
+    //startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
+    totalTime = 120;
+    StartCountDown(totalTime, false, false);
+    abortButton.style.display = "flex"
+
+    deRenderDivToRenderIn(analogClockDiv, true);
 }, false);
 
 
