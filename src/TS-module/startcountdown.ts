@@ -2,24 +2,38 @@ import { Timer } from 'easytimer.js';
 
 let timer: Timer = new Timer();
 
+let pauseTimer: Timer = new Timer();
+
 let digitalTimer: HTMLHeadingElement = document.querySelector('#digitalTime')
 
 let abortBtn : HTMLButtonElement = document.querySelector('#stop')
+let formBG : HTMLFormElement = document.querySelector('form')
+
 
 let label = document.querySelector('#prog')
 
 // Start countdown on click, with times in seconds from form as arguments
 let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: boolean) => {
     timer.start({countdown: true, startValues: {seconds: timeInSeconds}, target: {seconds: 0}})
+    pauseTimer.start({countdown: true, startValues: {seconds: 50}, target: {seconds: 0}})
+    pauseTimer.pause()
     let countdownNumber:number = timeInSeconds;
+   let label: HTMLDivElement  = document.querySelector('#progbar')
     timer.on('secondsUpdated', () => {
+        let circleNumber:any;
         let procent = (countdownNumber / timeInSeconds)*100
-        let nyProcent = 100 - procent
-        console.log('timer values: ', timer.getTimeValues().seconds, 'procent: ', procent);
-        label.style.height = `${nyProcent}vh`;
+        //console.log('timer values: ', timer.getTimeValues().seconds, 'procent: ', procent);
+        label.style.height = `${procent}vh`
+        let division:any = procent / 11
+         circleNumber = parseInt( division ) +1
+        let circle: any = document.querySelector(`.circle${circleNumber}`)
+        //console.log(’ rad 35 ’, ‘Circlenumber ‘, circleNumber, circle );
+        circle.style.backgroundColor =`#999999`
+        countdownNumber--;
 
-        console.log('timer1 ', countdownNumber--);
-        console.log('modulus', countdownNumber % 60);
+       
+        console.log('timer1 **', countdownNumber--);
+        //console.log('modulus', countdownNumber % 60);
         let seconds:number = countdownNumber % 60
         let minutesFloat: any = countdownNumber / 60
         let minutes:any = parseInt(minutesFloat)
@@ -36,29 +50,35 @@ let startCountdown = (timeInSeconds: number, intervalOn: boolean, addBreak: bool
     })
     //If intervals is checked, restart timer after first interval ends, else stop timer
     timer.on('targetAchieved', () => {
-        console.log('timer1 ',"time's up!");
+       // console.log('timer1 ',"time's up!");
         countdownNumber = timeInSeconds;
         if (intervalOn && addBreak) {
             timer.pause()
-            let pausInterval = setInterval(() => {
-                console.log('paus');
-            }, 1000)
-             setTimeout(() => {
-                 clearInterval(pausInterval)
-                timer.reset();
-                console.log('pause over');            
-            }, 300000);
+            pauseTimer.reset()
         } else if (intervalOn && !addBreak) {
             timer.reset();
         } else {
             timer.stop();
+            let alarmView: HTMLDivElement = document.querySelector('#alarmRinging');
+            alarmView.style.display = `flex`;
         }
     })
 
+    pauseTimer.on('secondsUpdated', () => {
+        //console.log('paus');
+    })
+    pauseTimer.on('targetAchieved', () => {
+        pauseTimer.pause()
+        pauseTimer.reset()
+        pauseTimer.stop()
+        timer.reset();
+        //console.log('pause over'); 
+    })
+
     abortBtn.addEventListener('click', () => {
-        console.log('timer stoppad', timer.isRunning());
+        //console.log('timer stoppad', timer.isRunning());
         timer.stop()
-        console.log('timer stoppad', timer.isRunning());
+        //console.log('timer stoppad', timer.isRunning());
         
     })
 }

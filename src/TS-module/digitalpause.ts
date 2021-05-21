@@ -14,3 +14,4 @@ function render(timer: any, msg?: String ) :string {
 }
 
 export { render }
+
