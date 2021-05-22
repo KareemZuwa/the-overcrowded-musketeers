@@ -1,5 +1,7 @@
 import { Timer } from 'easytimer.js';
-import  exportNav from '../TS-module/navigation'
+import  exportNav from '../TS-module/navigation';
+
+let initSeconds : number = 0;
 
 let digitalTimer: HTMLDivElement = document.querySelector('#digitalTime');
 let breakPage : HTMLDivElement = document.querySelector('#break-page');
@@ -22,6 +24,8 @@ export const timer : Timer = new Timer();
 
 export const StartCountDown = (numberOfSeconds : number, allowIntervals : boolean, allowFiveMinutesIntervals : boolean) => {
 
+    initSeconds = numberOfSeconds;
+
     // Init the analog and circle pages
     initAnalogClock();
 
@@ -32,32 +36,34 @@ export const StartCountDown = (numberOfSeconds : number, allowIntervals : boolea
         startValues: { seconds: numberOfSeconds}
     });
 
+    let divCircles = null;
+    let zIndexCounter : number = 0;
+
     // 1. Run this method everytime the seconds change or get updated
     timer.addEventListener('secondsUpdated', function (e) {
-
-        //console.log(timer.getTotalTimeValues().seconds)
 
         const minutesAndSeconds = `${timer.getTimeValues().minutes}:${timer.getTimeValues().seconds}`;
         //console.log(minutesAndSeconds);
 
         // Update the digital timer section
-        digitalTimer.innerHTML = minutesAndSeconds
-
-        // update the break page timer section
-        breakPage.insertAdjacentHTML(
-            'beforeend', 
-            `<section id="timer-digital"> 
-                ${minutesAndSeconds}
-            </section>`);
+        digitalTimer.innerHTML =  `<section id="timer-digital"> 
+                                        ${minutesAndSeconds}
+                                    </section>`;
 
         // update visual-page
         visualPageInnerDiv.style.height = `${((timer.getTimeValues().seconds * 100) / numberOfSeconds)}vh`;
 
         let minutesRadiusPercentage =  ((timer.getTimeValues().seconds * 100) / numberOfSeconds);
         const divToAdd = document.createElement('div');
+
         //divToAdd.style.width("shape-outside", `circle(${minutesRadiusPercentage}% at 0%)`);
-        divToAdd.setAttribute("style", `shape-outside: circle(${minutesRadiusPercentage}%);`);
-        divToAdd.style.border = "thick solid #0000FF";
+        divToAdd.style.border = "3px solid black";
+        divToAdd.style.borderRadius = "50%";
+        divToAdd.style.backgroundColor = "white";
+        divToAdd.style.borderRadius = "100%";
+        divToAdd.style.width = `${minutesAndSeconds}px`;
+        divToAdd.style.height = `${minutesAndSeconds}px`;
+        divToAdd.style.zIndex = `${zIndexCounter++}`;
 
         circlesDiv.appendChild(divToAdd);
 
@@ -65,7 +71,7 @@ export const StartCountDown = (numberOfSeconds : number, allowIntervals : boolea
         updateAnalogClock();
         
         // update numbers to words section
-        talTillOrd.innerText = (`${toWords(timer.getTimeValues().minutes)} minuter och ${toWords(timer.getTimeValues().seconds)} sekunder kvar`).toUpperCase();
+        talTillOrd.innerText = (`${toWords(timer.getTimeValues().minutes)} minuter \noch ${toWords(timer.getTimeValues().seconds)} \nsekunder \nkvar`).toUpperCase();
 
         // If the intervals are checked
         if(allowIntervals && !allowFiveMinutesIntervals)
@@ -81,6 +87,7 @@ export const StartCountDown = (numberOfSeconds : number, allowIntervals : boolea
         {
             if(timer.getTimeValues().seconds === 0)
             {
+                
                 // render the break page section
                 deRenderDivToRenderIn(breakPage, false);
                 timer.stop();
@@ -89,10 +96,13 @@ export const StartCountDown = (numberOfSeconds : number, allowIntervals : boolea
                         countdown: true, 
                         startValues: { seconds: 5 * 60}
                     });
-                
+
                 // get a reference to the break-count-down paragraph in the break-view section
-                let breakCountDown : HTMLParagraphElement = document.querySelector("#break-countdown");
-                breakCountDown.innerHTML = `${timer.getTimeValues().minutes}:${timer.getTimeValues().seconds}`;
+                let breakCountDown : HTMLDivElement = document.querySelector("#break-countdown");
+
+                timer.addEventListener('secondsUpdated', () => {
+                    breakCountDown.innerText = `${timer.getTimeValues().minutes}:${timer.getTimeValues().seconds}`;
+                })
             }
         }
     });

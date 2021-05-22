@@ -39,10 +39,16 @@ divToRenderIn.appendChild(startDiv);
 
 const deRenderDivToRenderIn = (htmElement : HTMLElement, setNav : boolean) => {
     
+    let holderDiv : HTMLDivElement = document.querySelector('#holderDiv');
     const divToRenderInChildren = Array.from(divToRenderIn.children);
+
     divToRenderInChildren.forEach(child => {
 
-        child !== document.querySelector('#menuToggle') ? divToRenderIn.removeChild(child) : null;
+        if(child !== document.querySelector('#menuToggle')){
+            const childRef = child;
+            divToRenderIn.removeChild(child);
+            holderDiv.appendChild(childRef);
+        }
     });
 
     if(setNav) divToRenderIn.appendChild(exportNav());
@@ -107,9 +113,21 @@ breakPageButton.addEventListener('click', () => {
 })
 
 breakPagePauseButton.addEventListener('click', () => {
+    
+    console.log('i reached here')
+    timer.stop();
+    StartCountDown(timeAmount, false, false);
+    let analogClock : HTMLDivElement = document.querySelector('#analogClock');
+    deRenderDivToRenderIn(analogClock, true);
+})
+
+/*
+breakPagePauseButton.addEventListener('click', () => {
     EasyTimer.stop();
+    console.log("i was clicked")
     StartCountDown(timeAmount, timeObject.intervalOn, timeObject.addBreak);
 })
+*/
 
 //When submit is clicked, a new timeInfo interface is created. The total amount of seconds is calculated, including break-time
 //The startCountdown-function is called with information from the interface as arguments.
@@ -147,7 +165,6 @@ startTimerButton.addEventListener('click', (e: Event) => {
     //console.log(timeObject.timeInMinutes);
     //analogClock(timeObject.timeInMinutes);
     //startCountdown(totalTime, timeObject.intervalOn, timeObject.addBreak)
-    totalTime = 3;
     StartCountDown(totalTime, timeObject.intervalOn, timeObject.addBreak);
     abortButton.style.display = "flex"
 
