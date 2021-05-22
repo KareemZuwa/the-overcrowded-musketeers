@@ -171,4 +171,3 @@ const deRenderDivToRenderIn = (htmElement : HTMLElement, setNav : boolean) => {
     if(setNav) divToRenderIn.appendChild(exportNav());
     divToRenderIn.appendChild(htmElement);
 }
-
